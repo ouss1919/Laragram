@@ -46,7 +46,7 @@ class ProfileController extends Controller
             $file = request('image');
             $filename = $file->getClientOriginalName();
             $image = Image::make($file);
-            dd(public_path("storage/{$file}"));
+            dd(public_path("storage/{$filename}"));
             //$image->save(public_path("storage/{$filename}"));
             $imageArray = ['image' => $filename];
         }
