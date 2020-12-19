@@ -42,10 +42,12 @@ class ProfileController extends Controller
             'image' => '',
         ]);
         if (request('image')) {
-            $imagePath = request('image')->store('profile', 'public');
-            $image = Image::make(public_path("storage/{$imagePath}"));
-            $image->save();
-            $imageArray = ['image' => $imagePath];
+            // $imagePath = request('image')->store('profile', 'public');
+            $file = request('image');
+            $filename = $file->getClientOriginalName();
+            $image = Image::make($file);
+            $image->save(public_path("storage/{$filename}"));
+            $imageArray = ['image' => $filename];
         }
         $user->profile->update(array_merge($data, $imageArray ?? []));
         return view('profils.index', compact('user'));
