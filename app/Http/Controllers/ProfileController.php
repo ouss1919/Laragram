@@ -43,7 +43,7 @@ class ProfileController extends Controller
         ]);
         if (request('image')) {
             $imagePath = request('image')->store('profile', 'public');
-            $image = Image::make($imagePath->getRealPath())->fit(200, 200);
+            $image = Image::make(public_path("storage/{$imagePath}"));
             $image->save();
             $imageArray = ['image' => $imagePath];
         }
