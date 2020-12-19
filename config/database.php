@@ -1,10 +1,9 @@
 <?php
 
 use Illuminate\Support\Str;
-
-$DATABASE_URL = parse_url("postgres://nroqboxogfxizc:6fa52c2cab1de169c340edb436ff97874c2060d6
+$DATABASE_URL = parse_url('postgres://nroqboxogfxizc:6fa52c2cab1de169c340edb436ff97874c2060d6
 75e2deecfb1b5e6da3ed07cd@ec2-34-251-118-151.eu-west-1.compute.amazonaws.com:5432
-/dacjhnn3ej60d9");
+/dacjhnn3ej60d9');
 return [
     /*
     |--------------------------------------------------------------------------
@@ -68,10 +67,9 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => $DATABASE_URL['url'],
             'host' => $DATABASE_URL['host'],
             'port' => $DATABASE_URL['port'],
-            'database' => ltrim($DATABASE_URL['path'], "/"),
+            'database' => ltrim($DATABASE_URL['host'], "/"),
             'username' => $DATABASE_URL['user'],
             'password' => $DATABASE_URL['pass'],
             'charset' => 'utf8',
