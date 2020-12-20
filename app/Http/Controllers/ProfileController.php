@@ -47,7 +47,7 @@ class ProfileController extends Controller
                 200,
                 200
             );
-            dd(public_path("storage/{$imagePath}"));
+            //dd(public_path("storage/{$imagePath}"));
             $image->save(public_path("storage/{$imagePath}"));
             $imageArray = ['image' => $imagePath];
         }
