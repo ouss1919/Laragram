@@ -48,7 +48,7 @@ class ProfileController extends Controller
                 200,
                 200
             );
-            //dd(public_path("storage/{$imagePath}"));
+            dd($image);
             Storage::disk('local')->makeDirectory(
                 public_path("storage/{$imagePath}")
             );
