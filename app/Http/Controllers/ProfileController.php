@@ -48,7 +48,7 @@ class ProfileController extends Controller
                 200
             );
             //dd($public_path("storage/{$imagePath}"));
-            $savePath = public_path("storage/{$imagePath}");
+            $savePath = public_path("storage/");
             if (!file_exists($savePath)) {
                 File::makeDirectory($savePath, $mode = 0777, true, true);
             }
