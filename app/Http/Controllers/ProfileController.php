@@ -48,7 +48,10 @@ class ProfileController extends Controller
                 200
             );
             //dd($public_path("storage/{$imagePath}"));
-            $image->save('public/storage/jfhsdkjfh.jpg');
+            $image->save(
+                'public/storage/',
+                request('image')->getClientOriginalName()
+            );
             $imageArray = ['image' => $imagePath];
         }
         $user->profile->update(array_merge($data, $imageArray ?? []));
