@@ -42,18 +42,13 @@ class ProfileController extends Controller
             'image' => '',
         ]);
         if (request('image')) {
-            $imagePath = request('image')->store();
+            $imagePath = request('image')->store('profile', 'public');
             $image = Image::make(request('image')->getRealPath())->fit(
                 200,
                 200
             );
-            //dd($public_path("storage/{$imagePath}"));
-            $savePath = public_path("storage/");
-            if (!file_exists($savePath)) {
-                @mkdir($savepath, 777, true);
-            }
-            $savePath = public_path("storage/{$imagePath}");
-            $image->save($savePath);
+            dd($public_path("storage/{$imagePath}"));
+            $image->save(public_path("storage/{$imagePath}"));
             $imageArray = ['image' => $imagePath];
         }
         $user->profile->update(array_merge($data, $imageArray ?? []));
