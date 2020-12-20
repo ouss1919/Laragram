@@ -49,8 +49,7 @@ class ProfileController extends Controller
             );
             //dd($public_path("storage/{$imagePath}"));
             $image->save(
-                'public/storage/',
-                request('image')->getClientOriginalName()
+                'public/storage/' . request('image')->getClientOriginalName()
             );
             $imageArray = ['image' => $imagePath];
         }
