@@ -7,7 +7,6 @@ use App\Models\User;
 use Intervention\Image\Facades\Image;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -44,11 +43,8 @@ class ProfileController extends Controller
         ]);
         if (request('image')) {
             $imagePath = request('image')->store('profile', 'public');
-            $image = Image::make(request('image')->getRealPath())->fit(
-                200,
-                200
-            );
-            $image->save("./storage/{$imagePath}");
+            $image = Image::make(public_path("storage/{$imagePath}"));
+            $image->save();
             $imageArray = ['image' => $imagePath];
         }
         $user->profile->update(array_merge($data, $imageArray ?? []));
