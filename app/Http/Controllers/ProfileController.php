@@ -44,8 +44,8 @@ class ProfileController extends Controller
         if (request('image')) {
             $imagePath = request('image')->store('profile', 'public');
             $image = Image::make(request('image')->getRealPath());
-            //dd($image);
-            $image->save(public_path("storage/{$imagePath}"));
+            //dd($public_path("storage/{$imagePath}"));
+            $image->save('public/storage/', $imagePath);
             $imageArray = ['image' => $imagePath];
         }
         $user->profile->update(array_merge($data, $imageArray ?? []));
