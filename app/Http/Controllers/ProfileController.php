@@ -42,7 +42,7 @@ class ProfileController extends Controller
             'image' => '',
         ]);
         if (request('image')) {
-            $imagePath = request('image')->store('storage', 'public');
+            $imagePath = request('image')->store('public');
             $image = Image::make(request('image')->getRealPath())->fit(
                 200,
                 200
