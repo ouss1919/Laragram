@@ -42,8 +42,8 @@ class ProfileController extends Controller
             'image' => '',
         ]);
         if (request('image')) {
-            $imagePath = request('image')->store('profile', 'public');
-            //dd(public_path("storage/{$imagePath}"));
+            $imagePath = request('image')->store('public', 'storage');
+            dd($imagePath);
             $image = Image::make(public_path("storage/{$imagePath}"));
             $image->save();
             $imageArray = ['image' => $imagePath];
