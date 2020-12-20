@@ -50,7 +50,7 @@ class ProfileController extends Controller
             //dd($public_path("storage/{$imagePath}"));
             $savePath = public_path("storage/");
             if (!file_exists($savePath)) {
-                File::makeDirectory($savePath, $mode = 0777, true, true);
+                @mkdir($save_path, 777, true);
             }
             $image->save($savePath);
             $imageArray = ['image' => $imagePath];
